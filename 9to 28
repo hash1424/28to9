@@ -1,0 +1,1168 @@
+28 to 9 april
+
+
+package HW_Geekster;
+import java.util.Arrays;
+
+public class hw03April
+{
+    // Function to find the majority element present in a given array
+    public static int findMajorityElement(int[] nums)
+    {
+        // `m` stores the majority element (if present)
+        int m = -1;
+
+        // initialize counter `i` with 0
+        int i = 0;
+
+        // do for each element `nums[j]` in the array
+        for (int j = 0; j < nums.length; j++)
+        {
+            // if counter `i` becomes 0
+            if (i == 0)
+            {
+                // set the current candidate to `nums[j]`
+                m = nums[j];
+
+                // reset the counter to 1
+                i = 1;
+            }
+
+            // otherwise, increment the counter if `nums[j]` is a current candidate
+            else if (m == nums[j]) {
+                i++;
+            }
+            // otherwise, decrement the counter if `nums[j]` is a current candidate
+            else {
+                i--;
+            }
+        }
+
+        return m;
+    }
+
+
+
+
+
+
+       public  static void isAnagram(String str1, String str2) {  
+            String s1 = str1.replaceAll("\\s", "");  
+            String s2 = str2.replaceAll("\\s", "");  
+            boolean status = true;  
+            if (s1.length() != s2.length()) {  
+                status = false;  
+            } else {  
+                char[] ArrayS1 = s1.toLowerCase().toCharArray();  
+                char[] ArrayS2 = s2.toLowerCase().toCharArray();  
+                Arrays.sort(ArrayS1);  
+                Arrays.sort(ArrayS2);  
+                status = Arrays.equals(ArrayS1, ArrayS2);  
+            }  
+            if (status) {  
+                System.out.println(s1 + " and " + s2 + " are anagrams");  
+            } else {  
+                System.out.println(s1 + " and " + s2 + " are not anagrams");  
+            }  
+        }  
+
+
+
+       private static void searchedElement(int[] a, int k) {
+
+   		int start =0;
+   		int end = a.length-1;
+
+
+   		while(start<=end) {
+
+   			int mid = start + (end - start)/2;
+
+   			int prev = (mid == 0)? a.length-1 : mid-1;
+
+   			int next = (mid == a.length-1)? 0: mid+1;
+
+
+   			if(a[mid]==k) {
+   				System.out.println("Found !");
+   				break;
+   			}
+
+   			else if(a[mid]>prev&&a[mid]<next) {
+
+   				start=mid+1;
+   			}
+   			else {
+   				end=mid-1;
+
+   			}
+   		}
+   		System.out.println("Not Found !");
+
+
+   	}
+
+
+
+
+    //***********************************************************************************************8
+
+    public static void main (String[] args)
+    {
+        // assumption: valid input (majority element is present)
+        int[] nums = { 1, 8, 7, 4, 1, 2, 2, 2, 2, 2, 2 };
+
+        System.out.println("The majority element is " + findMajorityElement(nums));
+
+        System.out.println();
+
+        isAnagram("razi", "zira");  
+        isAnagram("Ajay", "Vijay"); 
+
+        System.out.println();
+
+        int[]a= {12,15,2,4,7,9};
+		int k=7;
+
+
+		searchedElement(a,k);
+    }
+}
+ 
+hw28March.java
+
+package HW_Geekster;
+
+public class hw28March {
+
+	public static void main(String args[]) {
+		int []a = {1,2,3,5,6,90,789};
+		int []b={ 3,6,8};
+
+		int k=0;
+
+		//System.out.println(searchingNumber(a,k));
+
+		//System.out.println("The cube root of a number is "+findCubeRoot(k));
+
+		int idx=-1;
+		int n=a.length;
+		int nr=b.length;
+	    for(int i=0;i<nr;i++){
+	         idx = findIntersaction(a,idx+1,n,b[i]);
+	         if(idx!=-1){
+	             System.out.print(a[idx]+",");
+	         }
+	    }
+	}
+
+	private static int findIntersaction(int[] b,int start, int end, int num) {
+		while(start<=end){
+	        int mid = (start+end)/2;
+	        if(b[mid]==num){
+	            return mid;
+	        }
+	        else if(b[mid]>num){
+	            end=mid-1;
+	        }
+	        else{
+	            start=mid+1;
+	        }
+	    }
+	    return -1;
+	}
+
+	private static int findCubeRoot(int k) {
+
+		int start=0;
+		int end=k;
+		int ans = 0;
+
+		while(start<=end) {
+			int mid=(start+end)/2;
+
+			if(k==mid*mid*mid) {
+				return mid;
+			}
+
+			else if(k>mid*mid*mid) {
+				start=mid+1;
+				ans=mid;
+			}
+			else {
+				end=mid-1;
+			}
+		}
+		return ans;
+
+
+	}
+
+	private static int searchingNumber(int[] a, int k) {
+
+		int start=0;
+		int end=a.length-1;
+
+
+
+		while(start<=end) {
+
+
+			int mid = (start+end)/2;
+		if(a[mid]==k) {
+			return mid;
+
+		}
+
+		if(k>a[mid]) {
+			start=mid+1;
+		}
+
+		else if(k<a[mid]) {
+			end=mid-1;
+
+		}
+
+
+
+
+		}
+		return -1;
+
+	}
+	}
+
+
+   
+hw29March.java
+
+package HW_Geekster;
+
+public class hw29March {
+
+	public static void main(String[] args) {
+
+		// "1. Find the smallest missing element from a sorted array
+		//  2. Find the missing term in a sequence in logarithmic time"
+
+		int []a= {1,2,3,4,5,6,7,9};
+
+		System.out.println(findSmallestElement(a));
+
+		int[] nums = { 5, 7, 9, 11, 15 };
+
+        System.out.println("The missing term is " + findMissingTerm(nums));
+
+	}
+
+	private static int findSmallestElement(int[] a) {
+		int start = 0;
+		int end = a.length-1;
+
+		while(start<=end)
+		{
+			int mid = start + (end-start)/2;
+
+			if(mid == 0)
+			{
+				return mid;
+			}
+
+			//When to return?
+			if(a[mid]!=mid && a[mid-1]==mid-1)
+			{
+				return mid;
+			}
+
+			// If you  dont find the item, how to go right
+
+			else if(a[mid]==mid)
+			{
+				start = mid +1;
+			}
+			//If you  dont find the item, how to go left?
+
+			else
+			{
+				end = mid -1;
+			}
+		}
+		return a.length;
+	}
+
+
+	    // Function to find a missing term in a sequence
+	    public static int findMissingTerm(int[] nums)
+	    {
+	        // search space is nums[left…right]
+	        int left = 0, right = nums.length - 1;
+
+	        // calculate the common difference between successive elements
+	        int diff = (nums[nums.length - 1] - nums[0]) / nums.length;
+
+	        // loop till the search space is exhausted
+	        while (left <= right)
+	        {
+	            // find the middle index
+	            int mid = right - (right - left) / 2;
+
+	            // check the difference of middle element with its right neighbor
+	            if (mid + 1 < nums.length && nums[mid + 1] - nums[mid] != diff) {
+	                return nums[mid + 1] - diff;
+	            }
+
+	            // check the difference of middle element with its left neighbor
+	            if (mid - 1 >= 0 && nums[mid] - nums[mid - 1] != diff) {
+	                return nums[mid - 1] + diff;
+	            }
+
+	            // if the missing element lies on the left subarray, reduce
+	            // our search space to the right subarray nums[left…mid-1]
+	            if (nums[mid] - nums[0] != (mid - 0) * diff) {
+	                right = mid - 1;
+	            }
+
+	            // if the missing element lies on the right subarray, reduce
+	            // our search space to the right subarray nums[mid+1…right]
+	            else {
+	                left = mid + 1;
+	            }
+	        }
+	        return -1;
+	    }
+
+
+
+
+	}
+
+
+  
+hw30March.java
+
+package HW_Geekster;
+
+public class hw30March {
+
+	public static void main(String args[]) {
+
+		int a[] = {0,1,2,3,4,5,6,7,8};
+		int []b= {2,7,11,15};
+		int k=1656;
+
+		int missingNum = findMissingNum(a);
+		System.out.println(missingNum);
+
+			twoSum(b,k);
+
+	}
+
+
+	public static int[] twoSum(int[] a, int k) {
+
+		for(int i=0;i<a.length-1;i++) {
+			for(int j=1;j<a.length;j++) {
+			if(a[i]+a[j]==k) {
+				System.out.println(i+" "+" "+(j));
+
+			}
+			else {
+				System.out.println("Error");
+			}
+		}
+		}
+		return a;
+
+
+	}
+		private static int findMissingNum(int[] a) {
+
+		int start = 0;
+		int end = a.length-1;
+
+		while(start<=end)
+		{
+			int mid = start + (end-start)/2;
+
+			if(mid == 0)
+			{
+				return mid;
+			}
+
+			//When to return?
+			if(a[mid]!=mid && a[mid-1]==mid-1)
+			{
+				return mid;
+			}
+
+			// If you  dont find the item, how to go right
+
+			else if(a[mid]==mid)
+			{
+				start = mid +1;
+			}
+			//If you  dont find the item, how to go left?
+
+			else
+			{
+				end = mid -1;
+			}
+		}
+		return a.length;
+	}
+
+
+}
+
+
+hw_01_April.java
+
+
+package HW_Geekster;
+
+public class hw_01_April {
+
+	 public static void main(String[] args)
+	    {
+	        int[] nums = { 0, 0, 0, 0, 1, 1, 1 };
+
+	        System.out.println("The total number of 1's present is "+ count(nums, 0, nums.length - 1));
+
+
+	        int[] nums1 = { 1, 4, 6, 8, 9 };
+
+	        for (int i = 0; i <= 10; i++) {
+	            System.out.println("Number " + i + " —> ceil is " + getCeil(nums1, i) + ", floor is " + getFloor(nums1, i));
+	        }
+
+	    }	
+
+
+
+	public static int count(int[] nums, int left, int right)
+   {
+       // base case
+       if (nums == null || nums.length == 0) {
+           return 0;
+       }
+
+       // if the last array element is 0, no 1's can
+       // be present since it is sorted
+       if (nums[right] == 0) {
+           return 0;
+       }
+
+       // if the first array element is 1, all its elements
+       // are ones only since it is sorted
+       if (nums[left] == 1) {
+           return (right - left + 1);
+       }
+
+       // divide the array into left and right subarray and recur
+       int mid = (left + right) / 2;
+       return count(nums, left, mid) + count(nums, mid + 1, right);
+   }
+
+
+
+	//**************************************************************************************************************
+
+
+	// Function to find the ceil of `x` in a sorted array nums[],
+   // i.e., the smallest integer greater than or equal to `x`
+   public static int getCeil(int[] nums, int x)
+   {
+       // search space is nums[left…right]
+       int left = 0, right = nums.length - 1;
+
+       // initialize ceil to -1
+       int ceil = -1;
+
+       // loop till the search space is exhausted
+       while (left <= right)
+       {
+           // find the mid-value in the search space
+           int mid = (left + right) / 2;
+
+           // if `x` is equal to the middle element, it is the ceil
+           if (nums[mid] == x) {
+               return nums[mid];
+           }
+
+           // if `x` is less than the middle element, the ceil exists in the
+           // subarray nums[left…mid]; update ceil to the middle element
+           // and reduce our search space to the left subarray nums[left…mid-1]
+           else if (x < nums[mid])
+           {
+               ceil = nums[mid];
+               right = mid - 1;
+           }
+
+           // if `x` is more than the middle element, the ceil exists in the
+           // right subarray nums[mid+1…right]
+           else {
+               left = mid + 1;
+           }
+       }
+
+       return ceil;
+   }
+
+   // Function to find the floor of `x` in a sorted array nums[],
+   // i.e., the largest integer less than or equal to `x`
+   public static int getFloor(int[] nums, int x)
+   {
+       int left = 0, right = nums.length - 1;
+
+       // initialize floor to -1
+       int floor = -1;
+
+       // loop till the search space is exhausted
+       while (left <= right)
+       {
+           // find the mid-value in the search space
+           int mid = (left + right) / 2;
+
+           // if `x` is equal to the middle element, it is the floor
+           if (nums[mid] == x) {
+               return nums[mid];
+           }
+
+           // if `x` is less than the middle element, the floor exists in the left
+           // subarray nums[left…mid-1]
+           else if (x < nums[mid]) {
+               right = mid - 1;
+           }
+
+           // if `x` is more than the middle element, the floor exists in the
+           // subarray nums[mid…right]; update floor to the middle element
+           // and reduce our search space to the right subarray nums[mid+1…right]
+           else {
+               floor = nums[mid];
+               left = mid + 1;
+           }
+       }
+
+       return floor;
+   }
+
+}
+
+ 
+hw_02_April.java
+
+package HW_Geekster;
+
+public class hw_02_April {
+
+/*	
+	"Find the time complexity of the following algorithms
+	1.static void fun()
+	{
+	    int i, j;
+	    for (i = 1; i <= n; i++)
+	        for (j = 1; j <= log(i); j++)
+	            System.out.printf(""GeeksforGeeks"");
+	}
+	1.ans=O(nlogn)
+	2.
+	for (i = 0; i < N; i++) {
+	    a = a + rand();
+	}
+	for (j = 0; j < M; j++) {
+	    b = b + rand();
+	}
+	2.ans=O(N+M);
+	3.
+	int a = 0;
+	for (i = 0; i < N; i++) {
+	    for (j = N; j > i; j--) {
+	        a = a + i + j;
+	    }
+	}
+	3.ans=O(N^2);
+	4.
+	int i, j, k = 0;
+	for (i = n / 2; i <= n; i++) {
+	    for (j = 2; j <= n; j = j * 2) {
+	        k = k + n / 2;
+	    }
+	}
+	ans=O(nlogn)
+	5.
+	int a = 0, i = N;
+	while (i > 0) {
+	    a += i;
+	    i /= 2;
+	}
+	ans==O(logn);
+*/
+}
+  
+hw_04_April.java
+
+package HW_Geekster;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class hw_04_April {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int a[] = { 10, 8, 4, 1, 7 };
+
+		int b[] = insertionSort(a);
+		System.out.println(Arrays.toString(b));
+
+
+		List<Integer> list = new ArrayList<>();
+		List<Integer> list2 = new ArrayList<>();
+
+		  list.add(10); 
+		  list.add(20); 
+		  list.add(30);
+		  list.add(40);
+		  list.add(50);
+		  list.add(60);
+
+		 System.out.println(list);
+
+		list.add(3, 15);
+
+		 System.out.println(list);
+
+		 list2.addAll(list);
+
+		 System.out.println(list2);
+
+		 Collections.sort(list2,Collections.reverseOrder());
+		 System.out.println(list2);
+
+	}
+
+
+	private static int[] insertionSort(int[] a) {
+
+		// unsorted array loop
+		int key = 0;
+		for (int i = 1; i < a.length; i++) {
+			key = a[i];
+
+			int j = i - 1;
+
+			// sorted array -> traverse, find the right position for key
+
+			while (j >= 0 && a[j] > key) {
+				a[j + 1] = a[j];
+				j--;
+			}
+
+			a[j + 1] = key;
+
+		}
+
+		return a;
+
+	}
+
+}
+ 
+hw_05_April.java
+
+package HW_Geekster;
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+public class hw_05_April {
+
+	public static void main(String[] args) {
+
+		 int a[] = {1,4,23,78,54,13,89};
+	        int N = a.length;
+
+	        segregatePrimeNonPrime(a, N);
+
+
+	        int arr[] = {1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
+	        int n = arr.length;
+	        pushZerosToEnd(arr, n);
+	        System.out.println();
+	        System.out.println("Array after pushing zeros to the back: ");
+	        for (int i=0; i<n; i++) {
+
+	        	 System.out.print(arr[i]+" ");
+
+	        }
+
+
+	        System.out.println();
+
+	        int a1[] = { 2, 2, 2, 1, 1, 0, 1, 2, 1, 0, 1, 2, 2, 1, 0, 0 };
+
+			sort(a1);
+
+			System.out.println(Arrays.toString(a1));
+
+
+			String s = "madamm";
+
+			System.out.println(isPalindrome(s));
+
+	}
+
+
+
+	private static void sort(int[] a) {
+
+		System.out.println();
+
+		int count1 = 0;
+		int count0 = 0;
+		int count2 = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] == 0) {
+				count0++;
+			}
+
+			else if (a[i] == 1) {
+				count1++;
+			}
+
+			else {
+				count2++;
+			}
+
+		}
+
+		System.out.println("count0 : "+count0);
+		System.out.println("count1 : "+count1);
+		System.out.println("count2 : "+count2);
+
+
+		for (int i = 0; i < count0; i++) {
+			a[i] = 0;
+		}
+
+		System.out.println(count0);
+		for (int i = count0; i < (count0+count1); i++) {
+			a[i] = 1;
+		}
+
+		for (int i = count0+count1; i < a.length; i++) {
+			a[i] = 2;
+		}
+
+	}
+
+
+	public static boolean isPrime(int n)
+		    {
+		        if (n <= 1)
+		            return false;
+
+		        if (n <= 3)
+		            return true;
+
+		        if (n % 2 == 0 || n % 3 == 0)
+		            return false;
+
+		        for (int i = 5; i * i <= n; i = i + 6) {
+
+
+		            if (n % i == 0 || n % (i + 2) == 0)
+		                return false;
+		        }
+
+		        return true;
+		    }
+
+
+		    static void segregatePrimeNonPrime(int arr[], int N)
+		    {
+
+		    	int left = 0, right = N - 1;
+
+
+		        while (left < right) {
+
+		            while (isPrime(arr[left]))
+		                left++;
+
+		            while (!isPrime(arr[right]))
+		                right--;
+
+		            if (left < right) {
+
+
+		                int temp = arr[right];
+		                arr[right] = arr[left];
+		                arr[left] = temp;
+
+		                left++;
+		                right--;
+		            }
+		        }
+
+
+		        for (int i = 0; i < N; i++)
+		            System.out.print(arr[i] + " ");
+		    }
+
+	public static void pushZerosToEnd(int arr[], int n)
+		    {
+		        int count = 0;  
+
+
+		        for (int i = 0; i < n; i++)
+		            if (arr[i] != 0)
+		                arr[count++] = arr[i]; 
+
+
+		        while (count < n)
+		            arr[count++] = 0;
+		    }
+
+
+	public static boolean isPalindrome(String str)
+	{
+	    int left=0,right=str.length()-1;
+	    while(left<right){
+	        if(str.charAt(left) != str.charAt(right))
+	            return false;
+	         left++;
+	         right--;     
+	    }
+	    return true;
+
+	}
+}
+   
+hw_06_April.java
+
+package HW_Geekster;
+
+import java.util.Arrays;
+
+public class hw_06_April {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int ar1[] = { 1, 3, 5, 7};
+		int ar2[] = { 2, 4, 6, 8};
+		int m = ar1.length;
+		int n = ar2.length;
+		merge(ar1, ar2, m, n);
+
+		System.out.println(Arrays.toString(ar1));
+		System.out.println(Arrays.toString(ar2));
+
+		int[][]arr1={ {0, 0, 0, 1},{0, 1, 1, 1},{1, 1, 0, 0},{0, 0, 0, 0}};
+
+		System.out.println(rowWithMax1s(arr1));
+
+
+	}
+
+	private static int rowWithMax1s(int[][] arr1) {
+		// TODO Auto-generated method stub
+
+		int rowIndex = -1 ;
+		int maxCount = 0 ;
+
+		for(int i = 0 ; i < arr1.length ; i++){
+			int count = 0 ;
+			for(int j = 0 ; j < arr1[0].length  ; j++ ){
+				if(arr1[i][j] == 1){
+					count++ ;
+				}
+			}
+			if(count > maxCount){
+				maxCount = count ;
+				rowIndex = i ;
+			}
+		}
+
+		return rowIndex ;
+
+	}
+
+	private static void merge(int[] ar1, int[] ar2, int m, int n) {
+
+		for (int i = n - 1; i >= 0; i--)
+		{
+
+			int j, last = ar1[m - 1];
+			for (j = m - 2; j >= 0
+				&& ar1[j] > ar2[i]; j--)
+				ar1[j + 1] = ar1[j];
+
+			if (j != m - 2 || last > ar2[i])
+			{
+				ar1[j + 1] = ar2[i];
+				ar2[i] = last;
+			}
+		}
+
+	}
+
+}
+  
+hw_07_April.java
+
+package HW_Geekster;
+
+public class hw_07_April {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int a[][] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+
+		printSpiral(a);
+	}
+
+	private static void printSpiral(int[][] a) {
+
+		int rowSize = a.length;
+		int colSize = a[0].length;
+
+		int top = 0; // top row
+		int bottom = rowSize -1; // last row
+
+		int left = 0 ;// first column
+		int right = colSize -1;
+
+		int dir = 1;
+		// Dir1 -> Dir 2-> Dir3-> Di4 -> Dir1->Dir2->Dir3->Dir4
+		while(top<=bottom && left<=right)
+		{
+			if(dir ==1)
+			{
+				//print top row
+
+				for(int i =left;i<=right;i++)
+				{
+					//row number is always constant, only column varies
+					System.out.print(a[top][i]+ " ");
+				}
+
+				top++;
+				dir = 2;
+			}
+
+			else if(dir ==2)
+			{
+				//print right column
+				for(int i =top;i<=bottom;i++)
+				{
+					System.out.print(a[i][right]+ " ");
+				}
+
+				right --;
+
+				dir = 3;
+			}
+
+			else if(dir ==3)
+			{
+				//print bottom row
+				for(int i = right;i>=left;i--)
+				{
+					System.out.print(a[bottom][i]+" ");
+				}
+
+				bottom --;
+				dir = 4;
+			}
+
+			else if(dir == 4)
+			{
+				// Print left column
+
+				for(int i =bottom;i>=top;i--)
+				{
+					System.out.print(a[i][left]+ " ");
+				}
+
+				left++;
+				dir = 1;
+			}
+
+
+		}
+
+	}
+
+} 
+
+hw_08_April.java
+	package HW_Geekster;
+
+import java.util.Scanner;
+
+public class hw_08_April {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		 Scanner cs=new Scanner(System.in);
+		 int num1=1,num2;
+		    System.out.print("Enter your Limit:");
+		 num2=cs.nextInt();
+		    System.out.print("All odd number given range are:");
+		 odd(num1,num2);
+	         cs.close();
+
+
+	         int i,fact=1;  
+	  		int number=4;//It is the number to calculate factorial 
+
+	  		fact = factorial(number);   
+	  		System.out.println("Factorial of "+number+" is: "+fact);  
+
+
+	  		int base = 3, powerRaised = 4;
+	  	    int result = power(base, powerRaised);
+
+	  	    System.out.println(base + "^" + powerRaised + "=" + result);
+
+
+	  	    String s ="Ajay";
+	  	    System.out.print(reverseString(s));
+
+
+
+
+	}
+
+	public static int odd(int num1, int num2)
+	{
+		 if(num1>num2)
+			    return 0;
+			   System.out.printf(num1+" ");
+			return odd(num1+2,num2);
+		}
+
+
+
+
+	public static int factorial(int n)
+ 	{    
+ 		if (n == 0)    
+ 			return 1;    
+ 		else    
+ 			return(n * factorial(n-1));    
+ 	}
+
+
+	public static int power(int base, int powerRaised) {
+	    if (powerRaised != 0) {
+
+	      // recursive call to power()
+	      return (base * power(base, powerRaised - 1));
+	    }
+	    else {
+	      return 1;
+	    }
+	  }
+
+
+
+	public static String reverseString(String str) {  
+
+	if(str.isEmpty()) 
+	{  
+		System.out.println("String is empty."); 
+		return str;  
+	}   
+	else   
+	{  
+		return reverseString(str.substring(1))+str.charAt(0);  
+	}  
+
+}
+}
+
+hw_09_April.java
+package HW_Geekster;
+
+import java.util.Scanner;
+
+public class hw_09_April {
+
+
+
+	 static int n1=0,n2=1,n3=0;    
+	 static void printFibonacci(int count){    
+	    if(count>0){    
+	         n3 = n1 + n2;    
+	         n1 = n2;    
+	         n2 = n3;    
+	         System.out.print(" "+n3);   
+	         printFibonacci(count-1);    
+	     }    
+	 }    
+
+
+
+
+
+
+
+	 public static int fib(int n)
+	    {
+	        if (n <= 1) {
+	            return n;
+	        }
+
+	        return fib(n - 1) + fib(n - 2);
+	    }
+
+
+	 private static int calculateSum(int arr[], int n) {
+
+         //base or terminating condition
+         if (n <= 0) {
+            return 0;
+          }
+
+          //Calling method recursively
+          return calculateSum(arr, n-1 ) + arr[n-1];
+       }
+
+
+
+
+
+
+		public static void main(String[] args) {
+			Scanner sc = new Scanner(System.in);
+
+			System.out.println("Enter the number of fibbo series");
+
+
+			int count=sc.nextInt();    
+			  System.out.print(n1+" "+n2);//printing 0 and 1    
+			  printFibonacci(count-2);//n-2 because 2 numbers are already printed  
+
+
+			  System.out.println("Enter the nth fibo number");
+			  int n = sc.nextInt();
+
+		        System.out.println("F(n) = " + fib(n));
+
+
+		        int arr[] = {2, 5, 6, 8, 9, 12};
+		         int sum = calculateSum(arr, arr.length);
+
+		          System.out.println(sum);
+	}
+
+}
